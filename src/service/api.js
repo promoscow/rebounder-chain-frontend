@@ -1,6 +1,6 @@
 export default class Api {
 
-    _apiPath = 'http://localhost:8081';
+    _apiPath = 'http://localhost:8099';
     _logUrl = '/log';
 
     getResource = async () => {
@@ -17,8 +17,8 @@ export default class Api {
             throw new Error(`Could not fetch ${this._logUrl}` +
                 `, received ${res.status}`)
         }
-        console.log(res.json());
-        return await res.json();
+        console.log(res.clone().json());
+        return await res.clone().json();
     };
 
     saveEntry = () => {
