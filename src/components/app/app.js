@@ -26,7 +26,7 @@ export default class App extends Component {
                 <div className="title">
                     <button
                         className=" btn btn-outline-secondary"
-                        onClick={() => api.saveEntry()}>
+                        onClick={() => this.setState(api.getResource())}>
                         Нажать
                     </button>
                 </div>
