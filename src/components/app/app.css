@@ -1,11 +1,8 @@
-.main {
-    margin: 3rem auto 0 auto;
-    alignment: center;
-    max-width: 1200px;
-}
 
-.title {
+
+.main {
     margin: 2rem auto 0 auto;
     alignment: center;
     text-align: center;
+    max-width: 1200px;
 }

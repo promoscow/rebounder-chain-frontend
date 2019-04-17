@@ -4,24 +4,31 @@ export default class Api {
     _logUrl = '/log';
 
     getResource = async () => {
-        const res = await fetch(`${this._apiPath}${this._logUrl}`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-        });
+        const res = await fetch(`${this._apiPath}${this._logUrl}`);
 
         if (!res.ok) {
             throw new Error(`Could not fetch ${this._logUrl}` +
                 `, received ${res.status}`)
         }
-        console.log(res.clone().json());
-        return await res.clone().json();
+        let json = res.json();
+        console.log("===>");
+        console.log(json);
+        return await json;
     };
 
-    saveEntry = () => {
-        return this.getResource;
-    };
+    getData = async () => {
+        await fetch(`${this._apiPath}${this._logUrl}`)
+            .then(response => {
+                console.log('response.json()');
+                return response.json()
+            })
+            .then(data => {
+                console.log('data:');
+                console.log(data);
+                return data;
+            })
+            .catch(err => {
+                throw new Error(`Could not fetch`)
+            })
+    }
 };
