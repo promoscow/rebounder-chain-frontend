@@ -10,25 +10,6 @@ export default class Api {
             throw new Error(`Could not fetch ${this._logUrl}` +
                 `, received ${res.status}`)
         }
-        let json = res.json();
-        console.log("===>");
-        console.log(json);
-        return await json;
-    };
-
-    getData = async () => {
-        await fetch(`${this._apiPath}${this._logUrl}`)
-            .then(response => {
-                console.log('response.json()');
-                return response.json()
-            })
-            .then(data => {
-                console.log('data:');
-                console.log(data);
-                return data;
-            })
-            .catch(err => {
-                throw new Error(`Could not fetch`)
-            })
+        return await res.json();
     };
 };

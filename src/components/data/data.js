@@ -1,9 +1,6 @@
 import React from 'react';
 
 const Data = ({data}) => {
-    console.log(data.id);
-    console.log(data.created);
-    console.log(data);
     return (
         <div>
             <div className="main">

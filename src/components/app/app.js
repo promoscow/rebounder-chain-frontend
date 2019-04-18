@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './app.css'
 import Data from "../data/data";
 import Api from "../../service/api";
-import {Title, TitleDone} from '../title';
+import {Count, Title, TitleDone} from '../title';
 
 const api = new Api();
 
@@ -15,7 +15,7 @@ export default class App extends Component {
             created: null
         },
         clicked: false,
-        loading: true
+        count: 0
     };
 
     render() {
@@ -28,21 +28,20 @@ export default class App extends Component {
                 <div className="main">
                     <button
                         className=" btn btn-outline-secondary"
-                        onClick={() => {
-                            this.setState(() => {
-                                return {
-                                    data: api.getResource(),
-                                    clicked: true
-                                };
+                        onClick={async () => {
+                            this.setState({
+                                data: await api.getResource(),
+                                clicked: true
                             });
-                        }}>
+                        }}
+                    >
                         Нажать
                     </button>
                 </div>
                 <div className="main">
                     {data}
+                    <Count count={this.state.count}/>
                 </div>
-
             </div>
         );
     }
