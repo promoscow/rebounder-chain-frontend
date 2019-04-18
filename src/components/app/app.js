@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './app.css'
 import Data from "../data/data";
 import Api from "../../service/api";
-import {Count, Title, TitleDone} from '../title';
+import {Title, TitleDone} from '../title';
 
 const api = new Api();
 
@@ -14,8 +14,7 @@ export default class App extends Component {
             id: null,
             created: null
         },
-        clicked: false,
-        count: 0
+        clicked: false
     };
 
     render() {
@@ -40,7 +39,6 @@ export default class App extends Component {
                 </div>
                 <div className="main">
                     {data}
-                    <Count count={this.state.count}/>
                 </div>
             </div>
         );
