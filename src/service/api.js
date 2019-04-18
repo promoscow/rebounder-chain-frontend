@@ -30,5 +30,5 @@ export default class Api {
             .catch(err => {
                 throw new Error(`Could not fetch`)
             })
-    }
+    };
 };
