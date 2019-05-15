@@ -1,6 +1,7 @@
 export default class Api {
 
-    _apiPath = 'http://localhost:8099';
+    //todo укажите внешний путь к Вашему серверу и внешний порт
+    _apiPath = 'внешний_путь:внешний_порт';
     _logUrl = '/log';
 
     getResource = async () => {

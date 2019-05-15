@@ -1,22 +1,22 @@
-# back
-FROM openjdk:8-jdk-alpine
-
-LABEL maintainer="2262288@gmail.com"
-
-WORKDIR /usr/app/back
-VOLUME /tmp
-
-EXPOSE 8088
-
-ARG JAR_FILE=build/libs/rebounder-chain-backend-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} rebounder-chain-backend.jar
-ENTRYPOINT ["java","-jar","/rebounder-chain-backend.jar"]
-
 # front
-FROM node:alpine
-LABEL maintainer="2262288@gmail.com"
-WORKDIR /usr/app/front
-COPY ../rebounder-chain-frontend/ ./
 
+# Шаг 1. Скачиваем и устанавливаем NodeJS.
+FROM node:alpine
+
+# Шаг 2.
+LABEL maintainer="2262288@gmail.com"
+
+# Шаг 3. Задаём директорию, в которой будет лежать наше приложение в виртуальном Линуксе.
+WORKDIR /usr/app/front
+
+# Шаг 4. Открываем для контейнера порт 3000
+EXPOSE 3000
+
+# Шаг 5. Копируем данные из образа в рабочую папку.
+COPY ./ ./
+
+# Щаг 6. Запускаем менеджер пакетов NodeJS.
 RUN npm install
+
+# Шаг 7. Запускаем приложение.
 CMD ["npm", "start"]
