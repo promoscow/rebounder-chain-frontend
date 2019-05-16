@@ -1,7 +1,7 @@
 export default class Api {
 
     //todo укажите внешний путь к Вашему серверу и внешний порт
-    _apiPath = 'внешний_путь:внешний_порт';
+    _apiPath = 'http://localhost:8099';
     _logUrl = '/log';
 
     getResource = async () => {
@@ -11,6 +11,6 @@ export default class Api {
             throw new Error(`Could not fetch ${this._logUrl}` +
                 `, received ${res.status}`)
         }
-        return await res.json();
+        return res.json();
     };
 };
